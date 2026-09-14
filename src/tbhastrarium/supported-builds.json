@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "builds": [
+    {
+      "gameAssemblySha256": "a359faabf0101566a90f1d396b1c5528f2f2c77d710efe87125f7c197dcc3e27",
+      "steamBuildId": "25188646",
+      "unityVersion": "6000.0.72f1",
+      "status": "verified",
+      "features": ["drop-reader", "auto-stash", "stash-pages", "auto-combine", "auto-alchemy"]
+    }
+  ]
+}

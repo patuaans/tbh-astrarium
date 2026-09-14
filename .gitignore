@@ -1,0 +1,57 @@
+# Installed portable build (this repository also doubles as the local install folder)
+/TBHAstrarium.exe
+/_internal/
+/previous-version.bin
+
+# Local user data and diagnostics
+/tbh_*.json
+*.jsonl
+*.db
+*.db-*
+*.log
+*.reg
+*.es3
+*.dmp
+*.bak
+*.env
+.env.*
+!.env.example
+/*.tmp
+/*.disabled
+
+# Private reverse-engineering material and machine-specific notes
+/reverse-engineering/
+/README-REVERSE-ENGINEERING.md
+/research-private/
+**/dump.cs
+**/script.json
+**/stringliteral.json
+**/il2cpp.h
+**/wiki-items.json
+**/tbh_items_min.json
+**/catalog.local.json
+**/wiki-items.local.json
+
+# Build products and dependencies
+/dist/
+/.build/
+/build/
+**/bin/
+**/obj/
+*.exe
+*.dll
+*.pdb
+*.zip
+
+# Python, Node, and editor files
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+node_modules/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

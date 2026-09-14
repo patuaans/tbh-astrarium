@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <AssemblyName>TBHAstrarium.Companion</AssemblyName>
+    <RootNamespace>TBHAstrarium.Companion</RootNamespace>
+    <TaskBarHeroDir Condition="'$(TaskBarHeroDir)' == ''">$(TBH_GAME_DIR)</TaskBarHeroDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="BepInEx.Core"><HintPath>$(TaskBarHeroDir)\BepInEx\core\BepInEx.Core.dll</HintPath></Reference>
+    <Reference Include="BepInEx.Unity.IL2CPP"><HintPath>$(TaskBarHeroDir)\BepInEx\core\BepInEx.Unity.IL2CPP.dll</HintPath></Reference>
+    <Reference Include="0Harmony"><HintPath>$(TaskBarHeroDir)\BepInEx\core\0Harmony.dll</HintPath></Reference>
+    <Reference Include="Il2CppInterop.Runtime"><HintPath>$(TaskBarHeroDir)\BepInEx\core\Il2CppInterop.Runtime.dll</HintPath></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(TaskBarHeroDir)\BepInEx\interop\UnityEngine.CoreModule.dll</HintPath></Reference>
+    <Reference Include="UnityEngine.UI"><HintPath>$(TaskBarHeroDir)\BepInEx\interop\UnityEngine.UI.dll</HintPath></Reference>
+    <Reference Include="Il2Cppmscorlib"><HintPath>$(TaskBarHeroDir)\BepInEx\interop\Il2Cppmscorlib.dll</HintPath></Reference>
+    <Reference Include="Assembly-CSharp"><HintPath>$(TaskBarHeroDir)\BepInEx\interop\Assembly-CSharp.dll</HintPath></Reference>
+  </ItemGroup>
+
+  <Target Name="ValidateGameReferences" BeforeTargets="ResolveReferences">
+    <Error Condition="'$(TaskBarHeroDir)' == ''" Text="Set TBH_GAME_DIR or pass -p:TaskBarHeroDir=PATH to the build." />
+    <Error Condition="!Exists('$(TaskBarHeroDir)\BepInEx\interop\Assembly-CSharp.dll')" Text="BepInEx interop files were not found under $(TaskBarHeroDir). Start the modded game once before building." />
+  </Target>
+</Project>

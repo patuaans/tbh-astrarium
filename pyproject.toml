@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tbhastrarium"
+version = "0.1.0"
+description = "Unofficial Windows companion for TBH: Task Bar Hero"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+license = {file = "LICENSE"}
+dependencies = [
+  "frida>=17.18,<18",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: Microsoft :: Windows :: Windows 10",
+  "Operating System :: Microsoft :: Windows :: Windows 11",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Games/Entertainment",
+]
+
+[project.optional-dependencies]
+build = ["pyinstaller>=6.22,<7"]
+
+[project.scripts]
+tbhastrarium = "tbhastrarium.app:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+tbhastrarium = ["agents/*.js", "supported-builds.json"]

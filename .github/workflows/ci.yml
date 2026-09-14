@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  offline-tests:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: python -m pip install -r requirements.txt
+      - run: powershell -ExecutionPolicy Bypass -File scripts/check-release.ps1
+      - run: python -m compileall -q src tests
+      - run: python tests/test_storage.py
+      - run: python tests/test_stash_controller.py
+      - run: python tests/test_cube_controller.py
+      - run: node tests/test_stash_queue.cjs
+      - run: node tests/test_stash_agent.cjs
+      - run: node tests/test_cube_policy.cjs
+      - run: node tests/test_cube_agent.cjs
